@@ -1,0 +1,21 @@
+# Normalize line endings and enforce LF in the repository
+# Use platform-native CRLF on checkout for Windows, but store normalized LF in the repo
+* text=auto
+
+# Force LF for common text/code files
+*.js     text eol=lf
+*.jsx    text eol=lf
+*.ts     text eol=lf
+*.tsx    text eol=lf
+*.css    text eol=lf
+*.html   text eol=lf
+*.json   text eol=lf
+*.md     text eol=lf
+
+# Binary files
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.pdf    binary
