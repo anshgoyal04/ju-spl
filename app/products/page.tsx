@@ -1,11 +1,12 @@
 // import ProductFilterBar from "@/components/sections/ProductFilterBar";
+import CatalogSearch from "@/components/sections/CatalogSearch";
 import PageHero from "@/components/ui/PageHero";
 import ProductCard from "@/components/ui/ProductCard";
 import { PRODUCTS } from "@/data/products";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { HiArrowRight, HiOutlineSparkles } from "react-icons/hi";
-import CatalogSearch from "@/components/sections/CatalogSearch";
 export const metadata: Metadata = {
   title: "Products — Motorcycle Pistons, Piston Kits & Engine Components",
   description: "Browse Jindal Udyog's full range of motorcycle pistons, piston kits, cylinder liners, connecting rods, valve sets and engine components — manufactured to OEM tolerance.",
@@ -41,7 +42,9 @@ export default function ProductsPage() {
 <section className="pt-8 sm:pt-10">
   <div className="container-x">
     <h2 className="h-display text-2xl text-brand-black mb-5">Find a part for your vehicle</h2>
-    <CatalogSearch />
+    <Suspense fallback={null}>
+      <CatalogSearch />
+    </Suspense>
   </div>
 </section>
 
