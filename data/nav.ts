@@ -7,7 +7,7 @@ export const NAV: NavItem[] = [
     label: "About",
     href: "/about",
     children: [
-      { label: "Company Profile", href: "/about/company-profile", blurb: "Who we are, 45 years in" },
+      { label: "Company Profile", href: "/about/company-profile", blurb: "Who we are, 30 years in" },
       { label: "Our Journey", href: "/about/our-journey", blurb: "From foundry to global export" },
       { label: "Infrastructure", href: "/about/infrastructure", blurb: "Plant, tooling & capacity" },
       { label: "Manufacturing Facility", href: "/about/manufacturing-facility", blurb: "Inside the shop floor" },
@@ -18,6 +18,7 @@ export const NAV: NavItem[] = [
     label: "Products",
     href: "/products",
     children: [
+      { label: "New Launch", href: "/products/new-launch", blurb: "Our latest products" },
       { label: "Piston Assembly Kits", href: "/products/piston-assembly-kits" },
       { label: "Pistons", href: "/products/pistons" },
       { label: "Piston Rings", href: "/products/piston-rings" },
@@ -28,17 +29,7 @@ export const NAV: NavItem[] = [
       { label: "Engine Components", href: "/products/engine-components" },
     ],
   },
-  {
-    label: "Manufacturing",
-    href: "/manufacturing",
-    children: [
-      { label: "Casting", href: "/manufacturing/casting" },
-      { label: "Machining", href: "/manufacturing/machining" },
-      { label: "Heat Treatment", href: "/manufacturing/heat-treatment" },
-      { label: "Quality Inspection", href: "/manufacturing/quality-inspection" },
-      { label: "Packaging", href: "/manufacturing/packaging" },
-    ],
-  },
+    { label: "Manufacturing", href: "/manufacturing" },
   {
     label: "Quality",
     href: "/quality",
@@ -55,11 +46,10 @@ export const NAV: NavItem[] = [
     label: "Dealer Network",
     href: "/dealer-network",
     children: [
-      { label: "Become a Dealer", href: "/dealer-network#apply" },
-      { label: "Become a Distributor", href: "/dealer-network#apply" },
-      { label: "Become an Export Partner", href: "/dealer-network#apply" },
+      { label: "Become a Dealer", href: "/dealer-network", blurb: "Apply as a dealer, distributor or export partner" },
+      { label: "Our Network", href: "/dealer-network/our-network", blurb: "Find a partner near you" },
     ],
   },
   { label: "Blogs", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  // { label: "Contact", href: "/contact" },
 ];

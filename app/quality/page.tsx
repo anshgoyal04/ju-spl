@@ -1,40 +1,17 @@
-import type { Metadata } from "next";
+import QualityPillarRow from "@/components/sections/QualityPillarRow";
 import PageHero from "@/components/ui/PageHero";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { HiOutlineBeaker, HiOutlineScale, HiOutlineFire, HiOutlineCube } from "react-icons/hi";
+import SectionHeading from "@/components/ui/SectionHeading";
+import StatCounter from "@/components/ui/StatCounter";
+import { QUALITY_PILLARS, QUALITY_PROCESS, QUALITY_STATS } from "@/data/quality";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { HiArrowRight, HiOutlineBadgeCheck } from "react-icons/hi";
 
 export const metadata: Metadata = {
   title: "Quality — Inspection, Testing & Standards",
   description: "Inside Jindal Udyog's quality process: inspection laboratory, dimension testing, hardness testing, material testing and 100% quality control.",
   alternates: { canonical: "/quality" },
 };
-
-const SECTIONS = [
-  {
-    id: "inspection-laboratory",
-    icon: HiOutlineBeaker,
-    title: "Inspection laboratory",
-    desc: "Every batch is routed through our in-house inspection laboratory before it's cleared for packing, with documented results retained for traceability.",
-  },
-  {
-    id: "dimension-testing",
-    icon: HiOutlineCube,
-    title: "Dimension testing",
-    desc: "Bore diameter, ovality, ring-gap and skirt profile are measured against OEM tolerance on calibrated gauging equipment.",
-  },
-  {
-    id: "hardness-testing",
-    icon: HiOutlineScale,
-    title: "Hardness testing",
-    desc: "Post heat-treatment hardness is verified on every batch to confirm fatigue resistance and long-term durability.",
-  },
-  {
-    id: "material-testing",
-    icon: HiOutlineFire,
-    title: "Material testing",
-    desc: "Incoming raw alloy is verified for composition before it enters the casting line, ensuring consistency batch after batch.",
-  },
-];
 
 export default function QualityPage() {
   return (
@@ -45,24 +22,66 @@ export default function QualityPage() {
         description="Quality isn't a final checkpoint — it's built into every stage of production, from raw material intake to the moment a component is packed."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Quality" }]}
       />
-      <section className="section-pad">
+
+      <section className="bg-brand-charcoal py-14">
         <div className="container-x">
-          <div className="h-72 rounded-2xl overflow-hidden mb-14">
-            <PlaceholderImage icon={HiOutlineBeaker} tone="dark" label="Inspection laboratory" />
+          <StatCounter stats={QUALITY_STATS} />
+        </div>
+      </section>
+
+      {/* Quality pillars — zigzag, alternating background bands */}
+      {QUALITY_PILLARS.map((pillar, i) => (
+        <section key={pillar.id} className={`py-16 lg:py-20 ${i % 2 === 1 ? "bg-brand-grey-50" : "bg-white"}`}>
+          <div className="container-x">
+            <QualityPillarRow pillar={pillar} index={i} />
           </div>
-          <div className="space-y-16">
-            {SECTIONS.map((s) => (
-              <div key={s.id} id={s.id} className="scroll-mt-28 grid gap-8 lg:grid-cols-[auto_1fr] lg:items-start">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-grey-50">
-                  <s.icon className="h-7 w-7 text-brand-red" />
+        </section>
+      ))}
+
+      <section className="section-pad bg-brand-grey-50">
+        <div className="container-x">
+          <SectionHeading align="center" eyebrow="How it works" title="Five checkpoints, every single batch" />
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+            {QUALITY_PROCESS.map((step, i) => (
+              <div key={step.title} className="relative">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-red text-white h-display text-lg">
+                  {i + 1}
                 </div>
-                <div>
-                  <h2 className="h-display text-2xl text-brand-black">{s.title}</h2>
-                  <p className="mt-3 text-brand-grey-700 leading-relaxed max-w-2xl">{s.desc}</p>
-                </div>
+                <h3 className="h-display mt-4 text-base text-brand-black">{step.title}</h3>
+                <p className="mt-2 text-sm text-brand-grey-700">{step.desc}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-pad">
+        <div className="container-x">
+          <div className="rounded-3xl bg-brand-black p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-8">
+            <div className="flex items-center gap-5">
+              <HiOutlineBadgeCheck className="h-12 w-12 text-brand-red shrink-0" />
+              <div>
+                <h3 className="h-display text-xl sm:text-2xl text-white">Backed by ISO 9001:2015 and more</h3>
+                <p className="mt-2 text-white/60 max-w-lg">
+                  See our full certifications — quality management, registered trademark, and MSME ZED Bronze recognition.
+                </p>
+              </div>
+            </div>
+            <Link href="/about/certifications" className="btn-primary shrink-0">
+              View certifications <HiArrowRight />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-brand-red">
+        <div className="container-x flex flex-col items-center text-center gap-6">
+          <h2 className="h-display text-3xl sm:text-4xl text-white max-w-xl">
+            Quality you can audit, not just take our word for
+          </h2>
+          <Link href="/contact" className="rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-brand-red hover:-translate-y-0.5 transition-transform">
+            Request a quality documentation pack
+          </Link>
         </div>
       </section>
     </>

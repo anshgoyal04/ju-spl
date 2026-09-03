@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { HiOutlineCheckCircle } from "react-icons/hi";
-import { GiGears } from "react-icons/gi";
+import CatalogSlider from "@/components/sections/CatalogSlider";
+import InquiryForm from "@/components/ui/InquiryForm";
 import PageHero from "@/components/ui/PageHero";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import ProductCard from "@/components/ui/ProductCard";
-import InquiryForm from "@/components/ui/InquiryForm";
 import { PRODUCTS, getProduct, getRelatedProducts } from "@/data/products";
-import { productSchema, breadcrumbSchema } from "@/lib/schema";
-
+import { PRODUCT_SLUG_TO_VARIETY } from "@/data/productVarietyMap";
+import { breadcrumbSchema, productSchema } from "@/lib/schema";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { GiGears } from "react-icons/gi";
+import { HiOutlineCheckCircle } from "react-icons/hi";
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
@@ -29,7 +30,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
-
+const matchedVariety = PRODUCT_SLUG_TO_VARIETY[product.slug];
   const related = getRelatedProducts(product.slug);
 
   return (
@@ -97,7 +98,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           </div>
         </div>
       </section>
-
+{matchedVariety && <CatalogSlider variety={matchedVariety} />}
       <section className="section-pad bg-brand-grey-50">
         <div className="container-x">
           <h2 className="h-display text-2xl text-brand-black mb-8">Related products</h2>

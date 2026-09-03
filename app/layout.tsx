@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
-import { Inter, Poppins, Manrope } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import CartDrawer from "@/components/ui/CartDrawer";
+import CartFloatButton from "@/components/ui/CartFloatButton";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import { CartProvider } from "@/context/CartContext";
 import { organizationSchema, SITE_URL } from "@/lib/schema";
+import type { Metadata } from "next";
+import { Inter, Manrope, Poppins } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin"], weight: ["500", "600", "700", "800"], display: "swap" });
@@ -51,10 +54,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
         />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppFloat />
+        <CartProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppFloat />
+          <CartFloatButton />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

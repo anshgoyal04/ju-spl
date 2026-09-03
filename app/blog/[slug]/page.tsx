@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import PageHero from "@/components/ui/PageHero";
+import BlogEventGallery from "@/components/sections/BlogEventGallery";
 import BlogCard from "@/components/ui/BlogCard";
+import PageHero from "@/components/ui/PageHero";
+import SmartImage from "@/components/ui/SmartImage";
 import { BLOG_POSTS, getPost } from "@/data/blog";
 import { blogSchema } from "@/lib/schema";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
@@ -36,6 +38,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         description={post.excerpt}
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blogs", href: "/blog" }, { label: post.title }]}
       />
+
+      {/* Cover image */}
+      <section className="pt-12">
+        <div className="container-x">
+           <div className="relative h-64 sm:h-96 rounded-3xl overflow-hidden">
+            <SmartImage src={post.image} alt={post.title} fit="cover" fallbackTone="dark" />
+          </div>
+        </div>
+      </section>
+
       <section className="section-pad">
         <div className="container-x max-w-2xl">
           <div className="flex items-center gap-3 text-xs text-brand-grey-500 mb-8">
@@ -50,12 +62,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
       </section>
+
+      {post.gallery && post.gallery.length > 0 && (
+        <section className="section-pad !pt-0">
+          <div className="container-x">
+            <BlogEventGallery images={post.gallery} title={post.title} />
+          </div>
+        </section>
+      )}
+
       <section className="section-pad bg-brand-grey-50">
         <div className="container-x">
           <h2 className="h-display text-2xl text-brand-black mb-8">More from the blog</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {more.map((p) => (
-              <BlogCard key={p.slug} post={p} />
+            {more.map((p, i) => (
+              <BlogCard key={p.slug} post={p} index={i} />
             ))}
           </div>
         </div>

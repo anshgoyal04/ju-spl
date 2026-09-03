@@ -1,15 +1,15 @@
-import Link from "next/link";
-import type { Metadata } from "next";
-import { HiArrowRight } from "react-icons/hi";
 import PageHero from "@/components/ui/PageHero";
-import SectionHeading from "@/components/ui/SectionHeading";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { GiFactory } from "react-icons/gi";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { NAV } from "@/data/nav";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { GiFactory } from "react-icons/gi";
+import { HiArrowRight } from "react-icons/hi";
 
 export const metadata: Metadata = {
-  title: "About Jindal Udyog — 45 Years of Piston Manufacturing Excellence",
-  description: "Learn about Jindal Udyog (SPL Piston): our journey, infrastructure, manufacturing facility and certifications behind 45 years of precision piston manufacturing.",
+  title: "About Jindal Udyog — 30 Years of Piston Manufacturing Excellence",
+  description: "Learn about Jindal Udyog (SPL Piston): our journey, infrastructure, manufacturing facility and certifications behind 30 years of precision piston manufacturing.",
   alternates: { canonical: "/about" },
 };
 
@@ -20,7 +20,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About Jindal Udyog"
-        title="45 years of precision, one brand: SPL Piston"
+        title="30 years of precision, one brand: SPL Piston"
         description="From a single foundry in Agra to a trusted name across OEM, dealer and export channels — this is the story behind every piston we make."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
@@ -28,7 +28,7 @@ export default function AboutPage() {
       <section className="section-pad">
         <div className="container-x grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
-            <SectionHeading eyebrow="Company profile" title="Precision engineering, at scale" description="At Jindal Udyog, we are the driving force behind precision engineering in the world of piston manufacturing. With a rich heritage dating back 45 years, we have established ourselves as a trusted leader in the industry, delivering top-quality pistons that power engines of all sizes and applications." />
+            <SectionHeading eyebrow="Company profile" title="Precision engineering, at scale" description="At Jindal Udyog, we are the driving force behind precision engineering in the world of piston manufacturing. With a rich heritage dating back 30 years, we have established ourselves as a trusted leader in the industry, delivering top-quality pistons that power engines of all sizes and applications." />
             <p className="mt-5 text-brand-grey-700 leading-relaxed">
               Our commitment to excellence remains at the core of everything we do — from raw material intake through
               to export-ready dispatch. We serve OEM buyers, dealers, distributors and export partners across more

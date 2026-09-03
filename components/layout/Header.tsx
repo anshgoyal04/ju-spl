@@ -1,13 +1,17 @@
 "use client";
+import SmartImage from "@/components/ui/SmartImage";
 import { NAV } from "@/data/nav";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiChevronDown, HiOutlineMenu, HiOutlineX } from "react-icons/hi";
-
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+const isAccountPage = pathname?.startsWith("/dashboard");
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
@@ -47,8 +51,8 @@ export default function Header() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-black/5 px-5 py-5">
-              <span className="h-display text-lg">
-                SPL <span className="text-brand-red">PISTON</span>
+              <span className="relative block h-10 w-10 overflow-hidden rounded-full">
+                <Image src="/images/spl-logo.jpeg" alt="SPL Piston" fill className="object-cover scale-110" />
               </span>
               <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="p-1">
                 <HiOutlineX className="h-6 w-6" />
@@ -122,26 +126,24 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur border-b border-black/5 shadow-sm" : "bg-transparent"
-        }`}
+  scrolled || isAccountPage ? "bg-white/95 backdrop-blur border-b border-black/5 shadow-sm" : "bg-transparent"
+}`}
       >
         <div className="container-x">
           <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
-            <Link href="/" className="flex items-center gap-2 shrink-0">
-              <span
-                className={`h-display text-xl tracking-tight transition-colors ${scrolled ? "text-brand-black" : "text-white"}`}
-              >
-                SPL <span className="text-brand-red">PISTON</span>
-              </span>
-            </Link>
+            <Link href="/" className="flex items-center shrink-0">
+            <span className="relative block h-12 w-12 sm:h-14 sm:w-14">
+  <SmartImage src="/images/spl-logo.png" alt="SPL Piston" fit="contain" fallbackTone="red" />
+</span>
+          </Link>
 
             <nav className="hidden lg:flex items-center gap-1" onMouseLeave={() => setOpenMenu(null)}>
               {NAV.map((item) => (
                 <div key={item.label} className="relative" onMouseEnter={() => setOpenMenu(item.label)}>
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                      scrolled ? "text-brand-charcoal hover:bg-brand-grey-50" : "text-white/90 hover:bg-white/10"
+                    className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 text-sm font-medium rounded-full transition-colors ${
+                      (scrolled || isAccountPage) ? "text-brand-charcoal hover:bg-brand-grey-50" : "text-white/90 hover:bg-white/10"
                     }`}
                   >
                     {item.label}
@@ -185,8 +187,7 @@ export default function Header() {
             <button
               aria-label="Open menu"
               onClick={() => setMobileOpen(true)}
-              className={`lg:hidden rounded-full p-2 ${scrolled ? "text-brand-black" : "text-white"}`}
-            >
+className={`lg:hidden rounded-full p-2 ${scrolled || isAccountPage ? "text-brand-black" : "text-white"}`}            >
               <HiOutlineMenu className="h-7 w-7" />
             </button>
           </div>

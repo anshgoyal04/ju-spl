@@ -1,16 +1,26 @@
-import Link from "next/link";
-import { HiOutlineLocationMarker, HiOutlinePhone, HiOutlineMail } from "react-icons/hi";
-import { FaWhatsapp, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
+"use client";
+import SmartImage from "@/components/ui/SmartImage";
 import { NAV } from "@/data/nav";
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/login" || pathname === "/signup") return null;
+
   return (
     <footer className="bg-brand-black text-white/70">
       <div className="container-x py-16 grid grid-cols-2 gap-10 lg:grid-cols-5">
         <div className="col-span-2">
-          <span className="h-display text-xl text-white">
-            SPL <span className="text-brand-red">PISTON</span>
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="relative block h-12 w-12 shrink-0">
+              <SmartImage src="/images/spl-logo.png" alt="SPL Piston" fit="contain" fallbackTone="red" />
+            </span>
+            <span className="h-display text-lg sm:text-xl text-white leading-tight">
+              JINDAL UDYOG (INDIA)
+            </span>
+          </div>
           <p className="mt-4 text-sm leading-relaxed max-w-xs">
             Jindal Udyog — precision-engineered motorcycle pistons, piston kits and engine components, manufactured
             in Agra, India and trusted by OEM buyers, dealers and exporters worldwide.

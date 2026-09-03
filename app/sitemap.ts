@@ -1,8 +1,8 @@
-import type { MetadataRoute } from "next";
-import { PRODUCTS } from "@/data/products";
-import { MANUFACTURING_STEPS } from "@/data/manufacturing";
 import { BLOG_POSTS } from "@/data/blog";
+import { MANUFACTURING_STEPS } from "@/data/manufacturing";
+import { PRODUCTS } from "@/data/products";
 import { SITE_URL } from "@/lib/schema";
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/manufacturing-facility",
     "/about/certifications",
     "/products",
+    "/products/new-launch",
     "/manufacturing",
     "/quality",
     "/oem-solutions",

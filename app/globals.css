@@ -78,3 +78,6 @@ body {
 .section-pad {
   @apply py-20 lg:py-28;
 }
+button:not(:disabled) {
+  cursor: pointer;
+}

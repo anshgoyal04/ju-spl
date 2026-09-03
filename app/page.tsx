@@ -1,16 +1,16 @@
-import Link from "next/link";
-import type { Metadata } from "next";
-import { HiArrowRight, HiOutlineShieldCheck, HiOutlineCog, HiOutlineFire, HiOutlineTruck, HiOutlineGlobeAlt, HiOutlineBadgeCheck, HiOutlineCurrencyRupee, HiOutlineClock } from "react-icons/hi";
-import { GiFactory } from "react-icons/gi";
 import HomeHero from "@/components/sections/HomeHero";
+import BrandMarquee from "@/components/ui/BrandMarquee";
+import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import ProductCard from "@/components/ui/ProductCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StatCounter from "@/components/ui/StatCounter";
-import ProductCard from "@/components/ui/ProductCard";
-import BrandMarquee from "@/components/ui/BrandMarquee";
 import Timeline from "@/components/ui/Timeline";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { PRODUCTS } from "@/data/products";
 import { MANUFACTURING_STEPS } from "@/data/manufacturing";
+import { PRODUCTS } from "@/data/products";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { GiFactory } from "react-icons/gi";
+import { HiArrowRight, HiOutlineBadgeCheck, HiOutlineClock, HiOutlineCog, HiOutlineCurrencyRupee, HiOutlineFire, HiOutlineGlobeAlt, HiOutlineShieldCheck, HiOutlineTruck } from "react-icons/hi";
 
 export const metadata: Metadata = {
   title: "SPL Piston | Jindal Udyog — Engineering Precision. Powering Every Ride.",
@@ -79,7 +79,7 @@ export default function HomePage() {
 
       <section className="section-pad">
         <div className="container-x">
-          <SectionHeading align="center" eyebrow="Why SPL Piston" title="Built on 45 years of precision manufacturing" />
+          <SectionHeading align="center" eyebrow="Why SPL Piston" title="Built on 30 years of precision manufacturing" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {WHY_US.map((item) => (
               <div key={item.title} className="card-surface p-6 hover:-translate-y-1 transition-transform duration-300">
