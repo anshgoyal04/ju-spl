@@ -154,7 +154,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return next;
     });
-    setIsOpen(true);
+    // setIsOpen(true);
   };
 
   const updateQuantity = (sku: string, quantity: number) => {

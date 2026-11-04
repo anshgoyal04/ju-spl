@@ -17,7 +17,7 @@ export const PROCESS_PHASES: ProcessPhase[] = [
     title: "Planning & Sourcing",
     subtitle: "Every batch starts with a confirmed order and certified raw material.",
     steps: [
-      { step: 1, title: "Order", image: "/images/manufacturing-process/01-order.jpeg" },
+      { step: 1, title: "Order", image: "/images/manufacturing-process/01-order.jpg" },
       { step: 2, title: "Production Planning", image: "/images/manufacturing-process/02-production-planning.jpeg" },
       { step: 3, title: "Raw Material", image: "/images/manufacturing-process/03-raw-material.jpeg" },
       { step: 4, title: "Casting", image: "/images/manufacturing-process/04-casting.jpeg" },

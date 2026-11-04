@@ -71,7 +71,7 @@ export default function CompanyProfilePage() {
           <div className="relative">
             <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-xl">
               <SmartImage
-                src="/images/about/factory-aerial-view.jpg"
+                src="/images/about/factory-aerial-view.jpeg"
                 alt="Aerial view of the Jindal Udyog manufacturing facility in Agra"
                 fit="cover"
                 fallbackTone="light"

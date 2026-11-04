@@ -62,7 +62,7 @@ export default function OemSolutionsPage() {
 
           <div className="relative">
             <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-xl">
-              <SmartImage src="/images/oem/production-line.jpg" alt="OEM production line" fit="cover" fallbackTone="dark" />
+              <SmartImage src="/images/oem/oem-solution.jpg" alt="OEM production line" fit="cover" fallbackTone="dark" />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden sm:block rounded-2xl bg-brand-red px-6 py-4 shadow-lg">
               <p className="h-display text-2xl text-white">ISO 9001</p>

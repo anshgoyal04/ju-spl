@@ -14,9 +14,9 @@ export default function Footer() {
       <div className="container-x py-16 grid grid-cols-2 gap-10 lg:grid-cols-5">
         <div className="col-span-2">
           <div className="flex items-center gap-3">
-            <span className="relative block h-12 w-12 shrink-0">
-              <SmartImage src="/images/spl-logo.png" alt="SPL Piston" fit="contain" fallbackTone="red" />
-            </span>
+            <span className="relative block h-9 w-20">
+            <SmartImage src="/images/ju-spl-logo.png" alt="Jindal Udyog — SPL Piston" fit="contain" fallbackTone="dark" />
+          </span>
             <span className="h-display text-lg sm:text-xl text-white leading-tight">
               JINDAL UDYOG (INDIA)
             </span>

@@ -2,7 +2,6 @@
 import SmartImage from "@/components/ui/SmartImage";
 import { NAV } from "@/data/nav";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -51,9 +50,9 @@ const isAccountPage = pathname?.startsWith("/dashboard");
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-black/5 px-5 py-5">
-              <span className="relative block h-10 w-10 overflow-hidden rounded-full">
-                <Image src="/images/spl-logo.jpeg" alt="SPL Piston" fill className="object-cover scale-110" />
-              </span>
+              <span className="relative block h-12 w-12 sm:h-14 sm:w-14">
+              <SmartImage src="/images/spl-logo.png" alt="SPL Piston" fit="contain" fallbackTone="red" />
+            </span>
               <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="p-1">
                 <HiOutlineX className="h-6 w-6" />
               </button>
@@ -132,9 +131,9 @@ const isAccountPage = pathname?.startsWith("/dashboard");
         <div className="container-x">
           <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
             <Link href="/" className="flex items-center shrink-0">
-            <span className="relative block h-12 w-12 sm:h-14 sm:w-14">
-  <SmartImage src="/images/spl-logo.png" alt="SPL Piston" fit="contain" fallbackTone="red" />
-</span>
+            <span className="relative block h-9 w-20 sm:h-10 sm:w-24">
+              <SmartImage src="/images/ju-spl-logo.png" alt="Jindal Udyog — SPL Piston" fit="contain" fallbackTone="dark" />
+            </span>
           </Link>
 
             <nav className="hidden lg:flex items-center gap-1" onMouseLeave={() => setOpenMenu(null)}>
