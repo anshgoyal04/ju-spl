@@ -1,6 +1,7 @@
 "use client";
 import type { Dealer } from "@/data/dealers";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { FaWhatsapp } from "react-icons/fa";
@@ -17,6 +18,9 @@ export default function DealerDetailModal({ dealer, onClose }: { dealer: Dealer 
   useEffect(() => setMounted(true), []);
   useEffect(() => {
     document.body.style.overflow = dealer ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [dealer]);
 
   const modal = (
@@ -52,33 +56,48 @@ export default function DealerDetailModal({ dealer, onClose }: { dealer: Dealer 
               <div className="flex items-start gap-3">
                 <HiOutlineLocationMarker className="h-5 w-5 mt-0.5 text-brand-red shrink-0" />
                 <div>
-                  <p className="text-sm text-brand-black">{dealer.address}</p>
-                  <p className="text-sm text-brand-grey-500">{dealer.city}, {dealer.state}</p>
+                  {dealer.address && <p className="text-sm text-brand-black">{dealer.address}</p>}
+                  <p className={`text-sm ${dealer.address ? "text-brand-grey-500" : "text-brand-black"}`}>
+                    {dealer.city}, {dealer.state}
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <HiOutlinePhone className="h-5 w-5 text-brand-red shrink-0" />
-                <p className="text-sm text-brand-black">{dealer.phone}</p>
-              </div>
+              {dealer.phone && (
+                <div className="flex items-center gap-3">
+                  <HiOutlinePhone className="h-5 w-5 text-brand-red shrink-0" />
+                  <p className="text-sm text-brand-black">{dealer.phone}</p>
+                </div>
+              )}
               <div className="flex items-center gap-3">
                 <HiOutlineOfficeBuilding className="h-5 w-5 text-brand-red shrink-0" />
                 <p className="text-sm text-brand-black">Authorized {dealer.type.toLowerCase()}</p>
               </div>
             </div>
 
-            <div className="mt-7 flex gap-3">
-              <a href={`tel:${dealer.phone.replace(/\s/g, "")}`} className="btn-primary flex-1 justify-center text-sm">
-                <HiOutlinePhone className="h-4 w-4" /> Call
-              </a>
-              <a
-                href={`https://wa.me/${dealer.phone.replace(/\D/g, "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#1DA851] transition-colors"
-              >
-                <FaWhatsapp className="h-4 w-4" /> WhatsApp
-              </a>
-            </div>
+            {dealer.phone ? (
+              <div className="mt-7 flex gap-3">
+                <a href={`tel:${dealer.phone.replace(/\s/g, "")}`} className="btn-primary flex-1 justify-center text-sm">
+                  <HiOutlinePhone className="h-4 w-4" /> Call
+                </a>
+                <a
+                  href={`https://wa.me/${dealer.phone.replace(/\D/g, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#1DA851] transition-colors"
+                >
+                  <FaWhatsapp className="h-4 w-4" /> WhatsApp
+                </a>
+              </div>
+            ) : (
+              <div className="mt-7">
+                <p className="mb-3 text-xs text-brand-grey-500">
+                  Direct contact number will be added soon. Reach out to us and we'll connect you with this distributor.
+                </p>
+                <Link href="/contact" onClick={onClose} className="btn-primary w-full justify-center text-sm">
+                  Contact Jindal Udyog
+                </Link>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}

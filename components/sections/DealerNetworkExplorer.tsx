@@ -132,7 +132,15 @@ export default function DealerNetworkExplorer() {
                       </div>
                       <h4 className="h-display mt-2 text-base text-brand-black">{d.name}</h4>
                       <p className="mt-2 flex items-center gap-1.5 text-xs text-brand-grey-500">
-                        <HiOutlinePhone className="h-3.5 w-3.5" /> {d.phone}
+                        {d.phone ? (
+                          <>
+                            <HiOutlinePhone className="h-3.5 w-3.5" /> {d.phone}
+                          </>
+                        ) : (
+                          <>
+                            <HiOutlineLocationMarker className="h-3.5 w-3.5" /> {d.city}, {d.state}
+                          </>
+                        )}
                       </p>
                     </motion.button>
                   ))}

@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="col-span-2">
           <div className="flex items-center gap-3">
             <span className="relative block h-9 w-20">
-            <SmartImage src="/images/ju-spl-logo.png" alt="Jindal Udyog — SPL Piston" fit="contain" fallbackTone="dark" />
+            <SmartImage src="/images/ju-spl-logo1.png" alt="Jindal Udyog — SPL Piston" fit="contain" fallbackTone="dark" />
           </span>
             <span className="h-display text-lg sm:text-xl text-white leading-tight">
               JINDAL UDYOG (INDIA)

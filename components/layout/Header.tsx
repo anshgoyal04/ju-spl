@@ -51,7 +51,7 @@ const isAccountPage = pathname?.startsWith("/dashboard");
           >
             <div className="flex items-center justify-between border-b border-black/5 px-5 py-5">
               <span className="relative block h-12 w-12 sm:h-14 sm:w-14">
-              <SmartImage src="/images/spl-logo.png" alt="SPL Piston" fit="contain" fallbackTone="red" />
+              <SmartImage src="/images/ju-spl-logo1.png" alt="SPL Piston" fit="contain" fallbackTone="red" />
             </span>
               <button aria-label="Close menu" onClick={() => setMobileOpen(false)} className="p-1">
                 <HiOutlineX className="h-6 w-6" />
@@ -132,7 +132,7 @@ const isAccountPage = pathname?.startsWith("/dashboard");
           <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
             <Link href="/" className="flex items-center shrink-0">
             <span className="relative block h-9 w-20 sm:h-10 sm:w-24">
-              <SmartImage src="/images/ju-spl-logo.png" alt="Jindal Udyog — SPL Piston" fit="contain" fallbackTone="dark" />
+              <SmartImage src="/images/ju-spl-logo1.png" alt="Jindal Udyog — SPL Piston" fit="contain" fallbackTone="dark" />
             </span>
           </Link>
 

@@ -2,35 +2,34 @@ export type Dealer = {
   id: string;
   name: string;
   type: "Dealer" | "Distributor" | "Export Partner";
-  phone: string;
-  address: string;
+  phone?: string; // add later, e.g. "+91 98765 43210"
+  address?: string;
   city: string;
   state: string;
 };
 
-// Dummy/placeholder data — replace with real dealer list when available.
 export const DEALERS: Dealer[] = [
-  { id: "d1", name: "Agarwal Auto Spares", type: "Distributor", phone: "+91 90000 00001", address: "Shop 12, Foundry Nagar Market", city: "Agra", state: "Uttar Pradesh" },
-  { id: "d2", name: "Shree Krishna Motors", type: "Dealer", phone: "+91 90000 00002", address: "Sadar Bazar Road", city: "Agra", state: "Uttar Pradesh" },
-  { id: "d3", name: "Lucknow Piston Traders", type: "Dealer", phone: "+91 90000 00003", address: "Aminabad Market", city: "Lucknow", state: "Uttar Pradesh" },
-  { id: "d4", name: "Kanpur Auto Hub", type: "Distributor", phone: "+91 90000 00004", address: "Naveen Market", city: "Kanpur", state: "Uttar Pradesh" },
-  { id: "d5", name: "Capital Auto Parts", type: "Distributor", phone: "+91 90000 00005", address: "Karol Bagh", city: "Delhi", state: "Delhi NCR" },
-  { id: "d6", name: "Noida Engine Components", type: "Dealer", phone: "+91 90000 00006", address: "Sector 63 Industrial Area", city: "Noida", state: "Delhi NCR" },
-  { id: "d7", name: "Gurugram Spares Co.", type: "Dealer", phone: "+91 90000 00007", address: "Udyog Vihar Phase 3", city: "Gurugram", state: "Delhi NCR" },
-  { id: "d8", name: "Bombay Auto Traders", type: "Distributor", phone: "+91 90000 00008", address: "Lamington Road", city: "Mumbai", state: "Maharashtra" },
-  { id: "d9", name: "Pune Piston House", type: "Dealer", phone: "+91 90000 00009", address: "Shivaji Nagar Market", city: "Pune", state: "Maharashtra" },
-  { id: "d10", name: "Nagpur Auto Zone", type: "Dealer", phone: "+91 90000 00010", address: "Itwari Market", city: "Nagpur", state: "Maharashtra" },
-  { id: "d11", name: "Pink City Motors", type: "Distributor", phone: "+91 90000 00011", address: "MI Road", city: "Jaipur", state: "Rajasthan" },
-  { id: "d12", name: "Jodhpur Spare Parts Co.", type: "Dealer", phone: "+91 90000 00012", address: "Sojati Gate Market", city: "Jodhpur", state: "Rajasthan" },
-  { id: "d13", name: "Ahmedabad Piston Corner", type: "Distributor", phone: "+91 90000 00013", address: "Ashram Road", city: "Ahmedabad", state: "Gujarat" },
-  { id: "d14", name: "Surat Auto Traders", type: "Dealer", phone: "+91 90000 00014", address: "Ring Road Market", city: "Surat", state: "Gujarat" },
-  { id: "d15", name: "Ludhiana Engine Parts", type: "Distributor", phone: "+91 90000 00015", address: "Gill Road Industrial Area", city: "Ludhiana", state: "Punjab" },
-  { id: "d16", name: "Amritsar Auto Spares", type: "Dealer", phone: "+91 90000 00016", address: "Hall Bazar", city: "Amritsar", state: "Punjab" },
-  { id: "d17", name: "Patna Piston Hub", type: "Dealer", phone: "+91 90000 00017", address: "Ashok Rajpath", city: "Patna", state: "Bihar" },
-  { id: "d18", name: "Kolkata Motor Traders", type: "Distributor", phone: "+91 90000 00018", address: "Bowbazar Street", city: "Kolkata", state: "West Bengal" },
-  { id: "d19", name: "Chennai Auto Components", type: "Distributor", phone: "+91 90000 00019", address: "Anna Salai", city: "Chennai", state: "Tamil Nadu" },
-  { id: "d20", name: "Coimbatore Spares Co.", type: "Dealer", phone: "+91 90000 00020", address: "RS Puram Market", city: "Coimbatore", state: "Tamil Nadu" },
-  { id: "d21", name: "Bengaluru Piston World", type: "Distributor", phone: "+91 90000 00021", address: "SP Road", city: "Bengaluru", state: "Karnataka" },
-  { id: "d22", name: "Gulf Auto Exports LLC", type: "Export Partner", phone: "+971 50 000 0022", address: "Deira Auto Market", city: "Dubai", state: "UAE" },
-  { id: "d23", name: "Colombo Spare Traders", type: "Export Partner", phone: "+94 77 000 0023", address: "Pettah Market", city: "Colombo", state: "Sri Lanka" },
+  { id: "d1", name: "SSAT Crank Parts", type: "Distributor", phone: "+91 7838958763", city: "Delhi", state: "Delhi" },
+{ id: "d2", name: "Star Engg. Parts", type: "Distributor", phone: "+91 7869268942", city: "Indore", state: "Madhya Pradesh" },
+{ id: "d3", name: "AIA Engg", type: "Distributor", phone: "+91 9826016348", city: "Bhopal", state: "Madhya Pradesh" },
+{ id: "d4", name: "Shree Sharman Spares", type: "Distributor", phone: "+91 9872475559", city: "Ludhiana", state: "Punjab" },
+{ id: "d5", name: "Auto Home", type: "Distributor", phone: "+91 9431865795", city: "Purnea", state: "Bihar" },
+{ id: "d6", name: "Yaseen Automobiles", type: "Distributor", phone: "+91 9494586612", city: "Vijayawada", state: "Andhra Pradesh" },
+{ id: "d7", name: "Adeeshwar Auto", type: "Distributor", phone: "+91 6399665052", city: "Agra", state: "Uttar Pradesh" },
+{ id: "d8", name: "Burma Reboring", type: "Distributor", phone: "+91 8089650561", city: "Cochin", state: "Kerala" },
+{ id: "d9", name: "Garg Auto", type: "Distributor", phone: "+91 8770179456", city: "Pathalgaon", state: "Chhattisgarh" },
+{ id: "d10", name: "Sagar Auto", type: "Distributor", phone: "+91 9415402037", city: "Lucknow", state: "Uttar Pradesh" },
+{ id: "d11", name: "Narang Traders", type: "Distributor", phone: "+91 9415441490", city: "Kanpur", state: "Uttar Pradesh" },
+{ id: "d12", name: "Bablu Auto", type: "Distributor", phone: "+91 9837391145", city: "Meerut", state: "Uttar Pradesh" },
+{ id: "d13", name: "Vipin Bhai", type: "Distributor", city: "Gopalganj", state: "Bihar" },
+{ id: "d14", name: "SS Auto", type: "Distributor", phone: "+91 9778624890", city: "Cuttack", state: "Odisha" },
+{ id: "d15", name: "Royal Touch", type: "Distributor", phone: "+91 9850619020", city: "Dhule", state: "Maharashtra" },
+{ id: "d16", name: "Tirth Auto", type: "Distributor", phone: "+91 9819303141", city: "Mumbai", state: "Maharashtra" },
+{ id: "d17", name: "Gulshan Auto", type: "Distributor", phone: "+91 9824128873", city: "Ahmedabad", state: "Gujarat" },
+{ id: "d18", name: "Chand Lathe", type: "Distributor", phone: "+91 8252265140", city: "Ranchi", state: "Jharkhand" },
+{ id: "d19", name: "Saifi Reboring", type: "Distributor", city: "Tundla", state: "Uttar Pradesh" },
+{ id: "d20", name: "Mondal Engg", type: "Distributor", phone: "+91 9064204336", city: "Nadia", state: "West Bengal" },
+{ id: "d21", name: "Agra Auto", type: "Distributor", address: "Balugunj", city: "Agra", state: "Uttar Pradesh" },
+{ id: "d22", name: "Swami Auto", type: "Distributor", phone: "+91 9437258593", city: "Berhampur", state: "Odisha" },
+{ id: "d23", name: "Indian Reboring", type: "Distributor", phone: "+91 9849350610", city: "Warangal", state: "Telangana" },
 ];

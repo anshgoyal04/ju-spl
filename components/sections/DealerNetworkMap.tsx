@@ -19,8 +19,8 @@ export default function DealerNetworkMap({ activeState, onSelectState }: Props) 
 
   const nodes = states.map(([name, count], i) => {
     const angle = (i / states.length) * Math.PI * 2 - Math.PI / 2;
-    const x = cx + radius * Math.cos(angle);
-    const y = cy + radius * Math.sin(angle) * 0.82;
+    const x = Math.round(cx + radius * Math.cos(angle));
+    const y = Math.round(cy + radius * Math.sin(angle) * 0.82);
     const r = 5 + (count / maxCount) * 7;
     return { name, count, x, y, r, angle };
   });
