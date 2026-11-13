@@ -1,7 +1,7 @@
 import CatalogSlider from "@/components/sections/CatalogSlider";
 import InquiryForm from "@/components/ui/InquiryForm";
 import PageHero from "@/components/ui/PageHero";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+// import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import ProductCard from "@/components/ui/ProductCard";
 import { PRODUCTS, getProduct, getRelatedProducts } from "@/data/products";
 import { PRODUCT_SLUG_TO_VARIETY } from "@/data/productVarietyMap";
@@ -9,7 +9,8 @@ import { breadcrumbSchema, productSchema } from "@/lib/schema";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GiGears } from "react-icons/gi";
+// import { GiGears } from "react-icons/gi";
+import SmartImage from "@/components/ui/SmartImage";
 import { HiOutlineCheckCircle } from "react-icons/hi";
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -57,8 +58,8 @@ const matchedVariety = PRODUCT_SLUG_TO_VARIETY[product.slug];
 
       <section className="section-pad">
         <div className="container-x grid gap-14 lg:grid-cols-2">
-          <div className="h-80 lg:h-full rounded-2xl overflow-hidden">
-            <PlaceholderImage icon={GiGears} tone="light" label={product.name} />
+          <div className="relative h-80 lg:h-full min-h-[20rem] rounded-2xl overflow-hidden bg-brand-grey-50">
+            <SmartImage src={product.image} alt={product.name} fit="contain" fallbackTone="light" />
           </div>
 
           <div>

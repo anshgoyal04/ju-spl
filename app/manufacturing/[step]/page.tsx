@@ -1,54 +1,88 @@
-import ManufacturingProcessExplorer from "@/components/sections/ManufacturingProcessExplorer";
 import PageHero from "@/components/ui/PageHero";
-import StatCounter from "@/components/ui/StatCounter";
+import Timeline from "@/components/ui/Timeline";
+import { MANUFACTURING_STEPS } from "@/data/manufacturing";
+import { breadcrumbSchema } from "@/lib/schema";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { HiArrowLeft, HiArrowRight, HiOutlineCheckCircle } from "react-icons/hi";
 
-export const metadata: Metadata = {
-  title: "Manufacturing Process — 20 Checkpoints, Order to Dispatch",
-  description: "Inside Jindal Udyog's full manufacturing process: from order and raw material to CNC machining, finishing, inspection and dispatch — 20 controlled steps.",
-  alternates: { canonical: "/manufacturing" },
-};
+export function generateStaticParams() {
+  return MANUFACTURING_STEPS.map((s) => ({ step: s.slug }));
+}
 
-export default function ManufacturingPage() {
+export async function generateMetadata({ params }: { params: Promise<{ step: string }> }): Promise<Metadata> {
+  const { step } = await params;
+  const item = MANUFACTURING_STEPS.find((s) => s.slug === step);
+  if (!item) return {};
+  return {
+    title: `${item.title} — SPL Piston Manufacturing | Jindal Udyog`,
+    description: item.summary,
+    alternates: { canonical: `/manufacturing/${item.slug}` },
+  };
+}
+
+export default async function ManufacturingStepPage({ params }: { params: Promise<{ step: string }> }) {
+  const { step } = await params;
+  const item = MANUFACTURING_STEPS.find((s) => s.slug === step);
+  if (!item) notFound();
+
+  const idx = MANUFACTURING_STEPS.findIndex((s) => s.slug === step);
+  const prev = idx > 0 ? MANUFACTURING_STEPS[idx - 1] : null;
+  const next = idx < MANUFACTURING_STEPS.length - 1 ? MANUFACTURING_STEPS[idx + 1] : null;
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", url: "/" },
+              { name: "Manufacturing", url: "/manufacturing" },
+              { name: item.title, url: `/manufacturing/${item.slug}` },
+            ])
+          ),
+        }}
+      />
       <PageHero
-        eyebrow="Manufacturing"
-        title="20 controlled steps, order to dispatch"
-        description="Every component moves through a fully documented, in-house process — from raw material intake to CNC precision machining, finishing and final inspection — before it's ever cleared for dispatch."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Manufacturing" }]}
+        eyebrow={`Manufacturing — Step ${item.step} of ${MANUFACTURING_STEPS.length}`}
+        title={`${item.title} — precision piston manufacturing`}
+        description={item.summary}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Manufacturing", href: "/manufacturing" },
+          { label: item.title },
+        ]}
       />
 
-      <section className="bg-brand-charcoal py-14">
-        <div className="container-x">
-          <StatCounter
-            stats={[
-              { value: 20, suffix: "", label: "Process steps" },
-              { value: 5, suffix: "", label: "Production phases" },
-              { value: 100, suffix: "%", label: "In-house, never outsourced" },
-              { value: 30, suffix: "+", label: "Years refining this process" },
-            ]}
-          />
-        </div>
-      </section>
-
       <section className="section-pad">
-        <div className="container-x">
-          <ManufacturingProcessExplorer />
-        </div>
-      </section>
-
-      <section className="py-20 bg-brand-red">
-        <div className="container-x flex flex-col items-center text-center gap-6">
-          <h2 className="h-display text-3xl sm:text-4xl text-white max-w-xl">
-            See this process behind your next order
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/quality" className="btn-outline">Our quality standards</Link>
-            <Link href="/contact" className="rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-brand-red hover:-translate-y-0.5 transition-transform">
-              Request a quote
-            </Link>
+        <div className="container-x grid gap-14 lg:grid-cols-[1.4fr_1fr]">
+          <div>
+            <p className="text-brand-grey-700 leading-relaxed">{item.detail}</p>
+            <h2 className="h-display mt-8 text-xl text-brand-black">What happens in this step</h2>
+            <ul className="mt-4 space-y-2.5">
+              {item.points.map((pt) => (
+                <li key={pt} className="flex items-start gap-2 text-sm text-brand-grey-700">
+                  <HiOutlineCheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" /> {pt}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 flex flex-wrap gap-4">
+              {prev && (
+                <Link href={`/manufacturing/${prev.slug}`} className="btn-outline-dark">
+                  <HiArrowLeft /> {prev.title}
+                </Link>
+              )}
+              {next && (
+                <Link href={`/manufacturing/${next.slug}`} className="btn-primary">
+                  {next.title} <HiArrowRight />
+                </Link>
+              )}
+            </div>
+          </div>
+          <div>
+            <Timeline steps={MANUFACTURING_STEPS} linkBase="/manufacturing" />
           </div>
         </div>
       </section>

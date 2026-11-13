@@ -1,4 +1,4 @@
-export const SITE_URL = "https://splpiston.com";
+export const SITE_URL = "https://www.splpiston.com";
 
 export function organizationSchema() {
   return {
@@ -7,7 +7,7 @@ export function organizationSchema() {
     "@id": `${SITE_URL}/#organization`,
     name: "Jindal Udyog (SPL Piston)",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/images/ju-spl-logo1.png`,
     description:
       "Jindal Udyog (SPL Piston) is a manufacturer, OEM supplier and exporter of motorcycle pistons, piston kits and engine components based in Agra, India.",
     address: {
@@ -24,13 +24,14 @@ export function organizationSchema() {
   };
 }
 
-export function productSchema(p: { name: string; summary: string; slug: string }) {
+export function productSchema(p: { name: string; summary: string; slug: string; image?: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: p.name,
     description: p.summary,
     url: `${SITE_URL}/products/${p.slug}`,
+    ...(p.image ? { image: `${SITE_URL}${p.image}` } : {}),
     brand: { "@type": "Brand", name: "SPL Piston" },
     manufacturer: { "@type": "Organization", name: "Jindal Udyog" },
   };

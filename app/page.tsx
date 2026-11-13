@@ -110,7 +110,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow mb-3 text-brand-red">Global reach</p>
             <h2 className="h-display text-3xl sm:text-4xl text-white leading-tight">
-              Exporting precision to 20+ countries
+              Exporting precision to 2+ countries
             </h2>
             <p className="mt-4 text-white/70 leading-relaxed max-w-md">
               From bulk OEM contracts to distributor pallets, our export packaging and documentation are built for

@@ -30,6 +30,11 @@ export const metadata: Metadata = {
     "SPL Piston",
     "Jindal Udyog",
   ],
+  robots: { index: true, follow: true },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     siteName: "SPL Piston — Jindal Udyog",
@@ -37,13 +42,21 @@ export const metadata: Metadata = {
     description:
       "Leading manufacturer of premium motorcycle pistons, piston kits and engine components trusted by OEM buyers, distributors and exporters.",
     url: SITE_URL,
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SPL Piston — Jindal Udyog, piston manufacturer in Agra, India",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SPL Piston | Jindal Udyog",
     description: "Precision-engineered motorcycle pistons, piston kits and engine components.",
+    images: ["/og-image.jpg"],
   },
-  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
